@@ -1,0 +1,12 @@
+Some of the ways I went about testing this section the project home work was. 
+
+I had a problem where if the field for an email was left empty it would only turn red for about a second and default back to normal.
+
+I figured out that I had a type of button and a form tag with both refreshed the page and made the box turn back to its default. 
+
+I had troupes trying to get the variable of the Json objects into the registration page, and found out that I must use a .js file in order to grab a function from a another file not a script tag in a html page. 
+
+I also had trouble writing json objects for a while, until After may console.logs I realized Instead of doing an object with an array of items I was doing a json object inside a json object. 
+
+Lastly, I had trouble making the cookie for this project, I was pretty sure I was making it the correct way but nothing printed out. I tried  to use a window alert and console log but it would always be empty. After looking up online I found out that I needed to create a server in order to make the cookies appear on a local host not just through the files. 
+

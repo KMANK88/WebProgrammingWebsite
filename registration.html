@@ -1,0 +1,135 @@
+<html>
+
+    <link rel="stylesheet" type="text/css" href="./cssFolder/style.css">
+    <script type="text/JavaScript" src="./javaScriptFolder/experience.js"></script>
+    <head>
+        <title>Karsten Pease Website</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="cssPass/bootstrap.css" rel="stylesheet">
+        <script src="jsPass/jquery.js"></script>
+        <script src="jsPass/jaktutorial.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    
+    </head>
+     <body>
+        <nav class="navbar navbar-inverse">
+            <ul class="nav navbar-nav">
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="registration.html">Registration</a></li>
+                <li><a href="projects.html">Projects</a></li>
+            </ul>
+          </nav>
+          <h1 align="center"> Hello Employers!</h1>
+          <p align="center">Please sign in.</p>
+        <div id="loginArea">
+          <div class="container">
+            <label for="uname" ><b>Username</b></label>
+            <input type="text" id="usr" placeholder="Enter Username" required>
+        
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+            <h4>Password Strength.</h4>
+            <div class="progress progress-striped active">
+                    <div id="jak_pstrength" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                  </div>
+            <select id="options">
+                <option value="default">Type of Employer</option>
+                <option value="OO">Object Orented</option>
+                <option value="WD">Web Design</option>
+                <option value="GD">Game Development</option>
+              </select>
+            <button id = "signIn" onclick="SubmitLogin();">Submit</button>
+        </div>
+
+
+        <div id="loggedIn">
+            <h3 id="name" align="center"></h3>
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-auto">
+                        <h3 align="center"></h3>
+                        <p id="List"></p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+            <script>
+                var name;
+name = document.getElementById("usr").value;
+jQuery(document).ready(function(){
+    	jQuery("#psw").keyup(function() {   //passwordStrength bar.
+    	  passwordStrength(jQuery(this).val());
+    	});
+    });
+
+    $(document).ready(function(){
+        Cookies.set('cookie1',"welcome"+ name, { expires: 1 });
+    
+    
+
+    
+    
+    
+    });
+
+               
+                //Must be run on a local host to see message.
+              // document.cookie = "You are Logged in";
+              
+
+
+            function SubmitLogin(){
+                
+                //deletes cookie.
+                //document.cookie = "message=You are Logged in; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
+                var value = document.getElementById("options");
+                var optionVal = value.options[value.selectedIndex].value;
+
+                if(document.getElementById("psw").value == ""){
+                    window.alert("Please enter password");
+                    return;
+                }
+                if(optionVal == "default"){
+                    window.alert("Please select which type of employer.")
+                    return;
+                 }
+                 if($("#usr").val() == ""){
+                 window.alert("Please enter user name")
+                     return;
+                 }
+                 window.alert(Cookies.get('cookie1'));
+                var loginArea = document.getElementById("loginArea");
+                var clicked = document.getElementById("loggedIn");
+                 
+                loginArea.style.visibility='hidden';
+                clicked.style.visibility='visible';
+                
+                if(optionVal == "OO"){
+                    
+                   document.getElementById("List").innerHTML= "<h2>Attributes best suited for Object Orented Programming:</h2><br>" +getObj();
+
+                }else if (optionVal == "WD"){
+                    document.getElementById("List").innerHTML= "<h2>Attributes best suited for Web Design:</h2><br>" +getWeb();
+                }else if(optionVal == "GD"){
+                    document.getElementById("List").innerHTML= "<h2>Attributes best suited for Game Design:</h2><br>" +getGame();
+                }
+                
+                document.getElementById("name").innerHTML= "Welcome "  + document.getElementById("usr").value;
+
+               
+
+            } 
+      
+           
+
+            </script>
+
+          </body>
+
+
+
+</html>

@@ -1,0 +1,143 @@
+<html>
+       <link rel="stylesheet" type="text/css" href="./cssFolder/style.css">
+    <head>
+        <title>Karsten Pease Website</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+    <link type="text/css" rel="stylesheet" href="textEditor/jquery-te-1.4.0.css">
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="textEditor/jquery-te-1.4.0.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
+ 
+ 
+  </head>
+ <body>
+    <nav class="navbar navbar-inverse">
+        <ul class="nav navbar-nav">
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="registration.html">Registration</a></li>
+            <li><a href="projects.html">Projects</a></li>
+        </ul>
+      </nav>
+   <div style="text-align: center;">
+   <h1>How to keep up with me?</h1>
+
+<h2>I have A GitHub account <a href="https://github.com/KMANK88" target="_blank">KMANK88</a></h2>
+<p>You can see most of the work I have done in my 3 years programming at University and in internships.</p>
+</div>
+<div class="contact-media">
+<h2>My email <a href="mailto:karstenpease88@outlook.com">Karsten Email</a></h2>
+   <br />
+<h2>Me on social media</h2>
+<h3><a href="https://twitter.com/KarstenPease?lang=enzs" target="_blank">Twitter</a> <a href="https://www.instagram.com/karstenpease/?hl=en" target="_blank">Instagram</a></h3>
+</div> 
+</body>
+<body>
+
+<h2 align="center">Or you can contact me here!</h2>
+<div class="text-center">
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="form-group">
+          <label for="exampleInputName2">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="First Last" onfocus="hoverOver(this);"  onblur="offClick(this);">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="example@somplace.com" onfocus="hoverOver(this);"  onblur="offClick(this);">
+        </div>
+        <div class="form-group ">
+          <label for="exampleInputText">Your Message</label>
+         <textarea  class="form-control" placeholder="Description" id="description"onfocus="hoverOver(this);"  onblur="offClick(this);"></textarea> 
+        </div>
+        <div class="form-group">
+        <button class="btn btn-default" id="check">Send Message</button>
+    </div>  
+    </div>
+    </div>
+    </div>
+    <div class="spacing"></div>
+</body>
+
+<script>
+
+function hoverOver(control){
+			control.style.background = "#ffff00";
+		}
+		function offClick(control)	{
+			control.style.background = "#ffffff";
+		}
+
+
+  function checkEmail(email) {
+                    var code = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                    return code.test(email);
+                 }
+
+                function validate() {
+                  var emailBox = $("#email");
+                        var email = $("#email").val();
+                        
+
+                        if (checkEmail(email)) {
+
+                        }else {
+                          window.alert("This is not a valid email, try again.");
+
+                          emailBox.css("background-color","red");
+                            return false;
+                        }
+                        
+                 }
+
+                 function checkEmptyFields(){
+                   var name = $("#name").val();
+                  
+                   var disc = $("#description").val();
+
+                  if(name == ""){
+                    window.alert("Empty name please fill out all requred fields.");
+                    $("#name").css("background-color","red");
+                    return false;
+                  }else if(disc == ""){
+                    window.alert("Empty description please fill out all requred fields.");
+                    $("#description").css("background-color","red");
+                    return false;
+                  }else{
+                    if(validate()==false){
+                      return false;
+                    }
+                    window.alert("Your message has been sent!");
+                    $("#name").val('');
+                   disc= $("#description").val('');
+                    email = $("#email").val('');
+                    
+                    return true;
+                  }
+
+                 }
+                 $('#description').jqte();
+                 $(document).ready(function(){
+                  $("#check").bind("click", checkEmptyFields);
+
+                  
+                
+                 });
+               
+
+
+
+	
+</script>
+
+<footer class="container-fluid text-center">
+        <p>&COPY; Karsten Pease 2018</p>
+      </footer>
+   </html>

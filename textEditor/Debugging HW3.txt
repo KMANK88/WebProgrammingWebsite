@@ -1,0 +1,11 @@
+Debugging- HW3
+
+When adding a rich text editor I ran into a lot of bugs. For a while I kept struggling with one editor in particular then realized it was out of date with the rest of my libraries I was using so I had to scrap that one and pick a different editor.
+
+It took me about 2 hours to get AJAX figured out, after staring at a XMHL error for a while I realized that it was the same type of bug that I had when dealing with cookies and  had to make a temporary server run while doing so an got that to work. I also made each JSOn object into their own file and accessed them through the script tag in the page I wanted them in and once loaded but it into a list from there. 
+
+While using a server I would constantly run into trouble of it not updating frequently, and later figured out that ignorer for something to update on local host I need to open up the console on google chrome and empty cans and hard reset the browser page. After doing this it would update every single time I ran it. 
+
+A small bug I encountered was when I had to change the cookie to use JQuery and i realized that the library I choose the name is the actually name of cookie and the value is what the cookie will display when used get(). 
+
+One bug I could not figure out that did not effect my code at all was an error 404 favicon.ico, I have no idea what it is but it does not seem to hinder any functionality. 

@@ -1,0 +1,175 @@
+<html>
+<link rel="stylesheet" type="text/css" href="./cssFolder/style.css">
+<meta http-equiv="Cache-control" content="no-cache">
+<head>
+    <title>Karsten Pease Website/experience</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/JavaScript" src="./javaScriptFolder/experience.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+ <body>
+    <nav class="navbar navbar-inverse">
+        <ul class="nav navbar-nav">
+          <li><a href="Home.html">Home</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="registration.html">Registration</a></li>
+          <li><a href="projects.html">Projects</a></li>
+        </ul>
+      </nav>
+      <div id="intro" align="center">
+      <h3 id="exp">My experiences?</h3>
+      <br> I have done a lot of different types of projects and solved manyh problems while at the University of Montana.
+      <br> I have a <a href="https://github.com/KMANK88" target="_blank">Github</a> account for you to see specific projects.
+    </div>  
+      <h2 align="center">Specific experiences</h2>
+      <div class="container">
+            <div class="row">
+              <div class="col-sm-4">
+                <h3>Languages</h3>
+                <p id="lang"></p>
+                 </div>
+              <div class="col-sm-4">
+                <h3>Specifics</h3>
+                       <p id="classes"></p>
+                </div>
+              <div class="col-sm-4">
+                <h3>Personal attributes (What I bring to the table)</h3>        
+                <p id="personal"></p>
+            </div>
+            </div>
+          </div>
+          <div id="exps">
+          <h2 align="center">Types of Work I am suited for.</h2>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-4">
+                <h3>Object Orented</h3>
+                <p id="Oo"></p>
+                </div>
+                <div class="col-sm-4">
+                    <h3>Web Programming</h3>
+                    <p id="Wp"></p>
+                </div>
+
+                <div class="col-sm-4">
+                    <h3>Game Design</h3>
+                    <p id="Gd"></p>
+                </div>
+
+            </div></div>
+            
+          </div>  
+          
+          <script>  
+
+         
+          $(document).ready(function() {
+           //getting json objects and accessing them through ajax
+            var Oo ="";
+              $.getJSON('./jsonFolder/obj.json', function(data) {
+                for(var i in data.ObjectOreinted){
+          Oo+= "<li>" + data.ObjectOreinted[i] + "</li>"
+        }
+                $('#Oo').html(Oo).css('display','none').slideDown(3000);
+            
+           });
+              var Wp = "";
+
+           $.getJSON('./jsonFolder/web.json', function(data) {
+                for(var i in data.Prog){
+          Wp+= "<li>" + data.Prog[i] + "</li>"
+        }
+                $('#Wp').html(Wp).css('display','none').slideDown(3000);
+           });
+
+
+          var Gd = "";
+
+           $.getJSON('./jsonFolder/game.json', function(data) {
+                for(var i in data.Design){
+          Gd+= "<li>" + data.Design[i] + "</li>"
+        }
+                $('#Gd').html(Gd).css('display','none').slideDown(3000);
+            
+            
+           });
+
+
+
+        });
+          
+            //JSON Objects
+          var Lang ={"Languages":[  "Java","JavaScript", "HTML", "CSS", "C",
+          "C++", "R"]};
+          var i, x = "";
+
+         for (i in Lang.Languages) {
+           x += "<li>"+  Lang.Languages[i] + "</li>";
+        }
+        var classes ={"Classes":[ "Data Viz","Web Programming","testing"]};
+          var j,y="";
+          
+          for (j in classes.Classes) {
+           y += "<li>"+  classes.Classes[j] + "</li>";
+        }
+        var personal = {"me":["Hard Worker","Independent","Communication skills","Passionate about projects",
+          "Competative","Attention to detail","perfectionist"]}
+         
+        var k,z="";
+        for(k in personal.me){
+          z+= "<li>" + personal.me[k] + "</li>"
+        }
+
+      
+          document.getElementById("lang").innerHTML = x;
+          document.getElementById("classes").innerHTML = y;
+          document.getElementById("personal").innerHTML = z;
+         
+         
+      
+         
+         
+          $(document).ready(function(){
+            
+            
+            
+            
+            
+            
+            
+            
+            //JQuery animation   
+            $("#exp").animate({fontSize: '8em'}, "slow");
+   
+               $('#exps').css('display', 'none');
+               $("#exps").slideDown(200);
+               
+
+               
+               $("#lang").css('display',"none");
+               $("#lang").fadeIn();
+
+
+               $("#classes").css('display',"none");
+               $("#classes").fadeIn(2000);
+               
+               $("#personal").css('display',"none");
+               $("#personal").fadeIn(4000);
+
+      
+
+            });
+         
+
+
+
+         </script>
+          
+</body>
+<footer class="container-fluid text-center">
+        <p>&COPY; Karsten Pease 2018</p>
+      </footer>
+
+</html>
