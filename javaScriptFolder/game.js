@@ -13,7 +13,7 @@ var rand;
 
 $(document).ready(function($){
  
-$('button').on('click', function() {
+$('#btnCheck').on('click', function() {
   document.getElementById('gameOver').innerHTML = "<h1> Have fun! <h2>";
   startGame = true;
   

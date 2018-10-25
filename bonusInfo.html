@@ -24,32 +24,32 @@
     </body>
     <body>
 
-            <canvas id="staticArt" width="600" height="400" style="border:2px solid black"></canvas>
-            <canvas id="signature" width="800" height="200" ><div class="txtStyle"></div></canvas>
-          
-            <br>
-    </body>
-    <body>
+            <div><h1>Getting info from web data</h1></div>
 
-                            <div id="gameStuff">
-                        <div id="gameOver"></div>
-                        <div id="result"></div>
-                        <canvas id="game" width="800" height="500"  onload="draw();" style="border:2px solid #000000;"></canvas>
-                        <script type="text/JavaScript" src="./javaScriptFolder/game.js"></script>
-                    </div>
+            <p><output id="webData"></output> </p>   
+            <button id="getData" onclick="startWorker();">Get Data</button> 
+              
+            
+                <script>
+                    var zz;
+                
+                function startWorker(){      
+                    if(typeof(Worker) !== "undefined") {      
+                    if(typeof(zz) == "undefined") {    
+                        w = new Worker("./javaScriptFolder/works.js");
+                    }
+                        w.onmessage = function(event){
+                            document.getElementById("webData").innerHTML = event.data;
+                        };
+                    } else {
+                        document.getElementById("webData").innerHTML = "Sorry no Web worker support.";
+                    }
+                }      
+                </script>
+                  </body>
 
-
-         
-                        
-<div id="highScore">Your Score is 0</div>
-<button id="btnCheck">Start Game</button>
-
-<button id="result" onclick="retrieveScore();">Get Your High Score</button>    
-
-</body>
     <footer class="container-fluid text-center">
             <p>&COPY; Karsten Pease 2018</p>
           </footer>
         
-          <script type="text/JavaScript" src="./javaScriptFolder/art.js"></script>
 </html>
