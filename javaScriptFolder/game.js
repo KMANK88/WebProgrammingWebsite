@@ -12,10 +12,11 @@ var ctx = canvas1.getContext('2d');
 var rand;
 
 $(document).ready(function($){
-
+ 
 $('button').on('click', function() {
   document.getElementById('gameOver').innerHTML = "<h1> Have fun! <h2>";
   startGame = true;
+  
  });
 
 $('body').on('keypress', function (e) {
@@ -61,6 +62,9 @@ var score=0;
 function Score(){
        score++;
       document.getElementById('highScore').innerHTML = "Your Score: " +  score;
+      window.localStorage.setItem("score",score);
+      return score;
+      
 }
 
 function randomNum(){
@@ -127,13 +131,20 @@ function fallingEnemy()
       }
   
   }
-
+  
 }
 
 setInterval(fallingEnemy,1000);
 setInterval(draw,1000/60);
 setInterval(Score, 10000);
 
+
+ 
+
+
+function retrieveScore(){
+  window.document.getElementById("result").innerHTML = "Your final score is " + window.localStorage.getItem("score");
+}
 
 // This performs simple rectangular collision detection
  
@@ -144,7 +155,9 @@ function checkCollision(x1,y1,h1,w1,x2,y2,h2,w2)
     {
       document.getElementById('gameOver').innerHTML = "<h1> GAME OVER<h2>";
           startGame = false;
-      return true;  
+     
+     
+          return true;  
 
     }
     else
