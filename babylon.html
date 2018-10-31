@@ -1,0 +1,211 @@
+<html xmlns="http://www.w3.org1999/xhtml">
+<link rel="stylesheet" type="text/css" href="./cssFolder/style.css">
+       
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Babylon example</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+        <script src="https://cdn.babylonjs.com/babylon.js"></script>
+        <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+        <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+       <style>
+                html, body {
+                    overflow: hidden;
+                    width: 100%;
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                }
+    
+                #cone {
+                    width: 100%;
+                    height: 100%;
+                    touch-action: none;
+                }
+                #diceTitle{
+                    text-align: center;
+                }
+            </style>
+    </head>
+    <body>
+            
+                    <nav class="navbar navbar-inverse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="Home.html">Home</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="experience.html">Experience</a></li>
+                            <li><a href="registration.html">Registration</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="bonusInfo.html">Extras</a></li>
+                            <li><a href="babylon.html">Babylon</a></li>
+                        </ul>
+                      </nav>
+                      <div id="diceTitle">                    
+                      <h1>The Random Dice</h1>
+                      <p>Refresh the page to get a new roll.</p>
+                    </div>
+
+        <canvas id="cone" touch-action="none"></canvas>
+
+        <script>
+            var canvas = document.getElementById("cone");
+            var engine = new BABYLON.Engine(canvas,true);
+
+            var createObj = function(){
+                var scene = new BABYLON.Scene(engine);
+                
+                var camera = new BABYLON.ArcRotateCamera("Camera", 3 * Math.PI /4,Math.PI/4,4,BABYLON.Vector3.Zero(),scene);
+                camera.attachControl(canvas,true);
+
+                var light1 = new BABYLON.HemisphericLight("light1",new BABYLON.Vector3(1,1,0), scene);
+                var light2 = new BABYLON.PointLight("light2",new BABYLON.Vector3(0,1,-1),scene);
+
+                var faceColors = new Array(3);
+
+            faceColors[1] = new BABYLON.Color4(0,1,0,1);   // green front
+			faceColors[2] = new BABYLON.Color4(0,0,1,1);   // blue side
+			faceColors[3] = new BABYLON.Color4(1,0,0,1);   //
+			faceColors[4] = new BABYLON.Color4(1,1,0,1);   // yellow top
+			faceColors[5] = new BABYLON.Color4(1,0,1,1); 
+            faceColors[0] = new BABYLON.Color4(0,1,0,1);   // yellow top
+
+                var options = {
+                    width: 1,
+			        height: 1,
+		    	    depth: 1,
+		            faceColors : faceColors
+                }
+
+            var box = BABYLON.MeshBuilder.CreateBox("box", options, scene);
+
+
+            var frameRate = 1;
+            var animationBox = new BABYLON.Animation("yAnimation", "rotation.y", frameRate, BABYLON.Animation.ANIMATIONTYPE_FLOAT,
+																		BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+    //Here we have chosen a loop mode, but you can change to :
+    //  Use previous values and increment it (BABYLON.Animation.ANIMATIONLOOPMODE_RELATIVE)
+    //  Restart from initial value (BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE)
+    //  Keep the final value (BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT)
+
+    // Animation keys
+    var keyFramesR = []; 
+
+		keyFramesR.push({
+		   frame: frameRate,
+		   value: Math.PI
+		});
+
+		keyFramesR.push({
+		   frame: 2 * frameRate,
+		   value: 2 * Math.PI
+		});
+
+		keyFramesR.push({
+		   frame: 3 * frameRate,
+		   value: 3 * Math.PI
+		});
+
+
+		//Adding keys to the animation object
+		animationBox.setKeys(keyFramesR);
+
+		//Then add the animation object to box1
+		box.animations.push(animationBox);
+
+ var animationBox2 = new BABYLON.Animation("xAnimation", "rotation.x", frameRate, BABYLON.Animation.ANIMATIONTYPE_FLOAT,
+																		BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+		// Animation keys
+		var keyFramesR2 = []; 
+
+		keyFramesR2.push({
+		frame: 0,
+		value: 0
+		});
+
+		keyFramesR2.push({
+		frame: 2 * frameRate,
+		value: 2 * Math.PI
+		});
+
+		keyFramesR2.push({
+		frame: 3 * frameRate,
+		value: 3 * Math.PI
+		});
+
+
+		//Adding keys to the animation object
+		animationBox2.setKeys(keyFramesR2);
+
+		//Then add the animation object to box1
+		box.animations.push(animationBox2);
+		//scene.beginAnimation(box, 0, 100, true);
+		
+		var nextAnimation = function() {
+		scene.beginDirectAnimation(box, [animationBox, animationBox2], 0, 2 * frameRate, true);
+		}
+
+		scene.beginDirectAnimation(box, [animationBox], 0, 2 * frameRate, false, 1, nextAnimation);
+		
+        
+        var mat = new BABYLON.StandardMaterial("mat", scene);
+        var text1 = new BABYLON.Texture("./images/die1.png",scene);
+        var text2 = new BABYLON.Texture("./images/die2.png",scene);
+        var text3 = new BABYLON.Texture("./images/die3.jpeg",scene);
+        var text4 = new BABYLON.Texture("./images/die4.png",scene);
+        var text5 = new BABYLON.Texture("./images/die5.png",scene);
+        var text6 = new BABYLON.Texture("./images/die6.png",scene);
+
+
+
+        var rand = Math.floor(Math.random() * 6)+1; 
+        var ans;
+        if(rand == 1){
+        ans = text1;
+        }else if(rand == 2){
+        ans = text2;
+        }else if(rand == 3){
+        ans = text3;
+        }else if(rand == 4){
+        ans = text4;
+        }else if(rand == 5){
+        ans = text5;
+        }else if(rand == 6){
+        ans = text6;
+        }
+
+        mat.diffuseTexture = ans;
+
+        box.material = mat;
+                
+            
+                        return scene;
+            };
+
+            var scene = createObj(); //Call the createScene function
+
+                // Register a render loop to repeatedly render the scene
+                engine.runRenderLoop(function () { 
+                        scene.render();
+                });
+
+                // Watch for browser/canvas resize events
+                window.addEventListener("resize", function () { 
+                        engine.resize();
+                });
+
+        </script>
+    </body>
+
+
+
+
+    <footer class="container-fluid text-center">
+            <p>&COPY; Karsten Pease 2018</p>
+          </footer>
+
+
+
+</html>

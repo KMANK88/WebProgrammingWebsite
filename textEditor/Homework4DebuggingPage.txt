@@ -1,0 +1,9 @@
+Homework 4 Write up Karsten Pease
+===================================
+Repo link: https://github.com/KMANK88/WebProgrammingWebsite
+
+I only had 3 main bugs for this homework. The first bug I had was the galleries were overlapping on each other. I realized that in both programs I had used the same variable names and this made them want to use the same canvas area. Once I had changed the id's and variable names the problem was solved. 
+
+The next problem I had was getting my signature to write in a decent time. When it would appear it would take about 5 minutes to write my entire name. My solution to the problem was moving the script tag out of the canvas area and putting it near the footer and out of the boy tag. 
+
+My last main bug I had was once I used the web worker to get data it would make my moving ball on the project page start to repaint and loose its boundaries. I could never find out why it did this, my guess was variable names or something about the button creating a different environment in the canvas. My solution was to use a new HTML page for the web worker function.

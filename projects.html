@@ -18,6 +18,7 @@
             <li><a href="registration.html">Registration</a></li>
             <li><a href="projects.html">Projects</a></li>
             <li><a href="bonusInfo.html">Extras</a></li>
+            <li><a href="babylon.html">Babylon</a></li>
         </ul>
       </nav>
     
@@ -44,9 +45,32 @@
 <div id="highScore">Your Score is 0</div>
 <button id="btnCheck">Start Game</button>
 
-<button id="result" onclick="retrieveScore();">Get Your High Score</button>    
+<button id="result" onclick="retrieveScore();">Get Your High Score</button>   
 
-</body>
+
+            <div><h1>Getting info from web data</h1></div>
+
+            <p><div id="webData"></div> </p>   
+            <button id="getData" onclick="startWorker();">Get Data</button> 
+              
+            
+                <script>
+                    var zz;
+                
+                function startWorker(){      
+                    if(typeof(Worker) !== "undefined") {      
+                    if(typeof(zz) == "undefined") {    
+                        w = new Worker("./javaScriptFolder/works.js");
+                    }
+                        w.onmessage = function(event){
+                            document.getElementById("webData").innerHTML = event.data;
+                        };
+                    } else {
+                        document.getElementById("webData").innerHTML = "Sorry no Web worker support.";
+                    }
+                }      
+                </script>
+                  </body>
     <footer class="container-fluid text-center">
             <p>&COPY; Karsten Pease 2018</p>
           </footer>
