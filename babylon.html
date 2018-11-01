@@ -41,6 +41,7 @@
                             <li><a href="projects.html">Projects</a></li>
                             <li><a href="bonusInfo.html">Extras</a></li>
                             <li><a href="babylon.html">Babylon</a></li>
+                            <li><a href="invaders.html">Game</a></li>
                         </ul>
                       </nav>
                       <div id="diceTitle">                    
@@ -157,7 +158,7 @@
         var text4 = new BABYLON.Texture("./images/die4.png",scene);
         var text5 = new BABYLON.Texture("./images/die5.png",scene);
         var text6 = new BABYLON.Texture("./images/die6.png",scene);
-
+        //spriteSheet
 
 
         var rand = Math.floor(Math.random() * 6)+1; 
@@ -180,8 +181,7 @@
 
         box.material = mat;
                 
-            
-                        return scene;
+             return scene;
             };
 
             var scene = createObj(); //Call the createScene function
