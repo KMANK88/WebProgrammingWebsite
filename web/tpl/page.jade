@@ -1,0 +1,11 @@
+html
+    head 
+        title#wow="Real time Chat Box"
+    script(src='/chat.js')
+    script(src='/socket.io/socket.io.js')
+    body(style='background-color:cyan;')
+        #content(style='width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 2px black; overflow-y: scroll; background-color:red')
+        .controls
+        
+    input#field(style='width:350px; margin: 5px;')
+    input#send(type='button', value='send' style='width: 200px; background-color: green; height: 25px; border-radius: 12px;')

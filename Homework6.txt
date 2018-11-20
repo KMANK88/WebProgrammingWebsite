@@ -1,0 +1,28 @@
+Homework 6 Karsten Pease
+
+To locate hatbox function open project directory, go to  web and run node index.js, and go to browser and use localhost 3700.
+
+Note: for the chat box to work, you must navigate into the web folder and start the function by using node index.js
+
+----------------------------
+1) install expressJS (npm install express), Jade (npm install jade), and Socket.io (npm install Socket.io)
+
+2)Create a server JS file using express
+
+3)Then create a jade file using a title, body tag and 2 input fields, make sure that the necessary script tags are linked in this page. 
+
+3.1)create an app.js File so that you may call the app function while using your server. 
+
+4)in the server file make sure to display the jade page using the necessary template. 
+
+4.1)We will also need to apply the socket.io effect in this file as well.
+
+5)create a new JS file for the chat function. In this file it will have all of functions needed to display the correct information in the chatbox. 
+
+6) start your server on local host and it should be running. 
+
+-----------------
+
+Database part of homework is located in the database folder
+
+
